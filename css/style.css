@@ -1,0 +1,49 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+:root {
+  --desaturatedRed: hsl(0, 36%, 70%);
+  --softRed: hsl(0, 93%, 68%);
+  --darkGrayishRed: hsl(0, 6%, 24%);
+  --gradientOne: 135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%);
+  --gradientTwo: 135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%);
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: rem(16);
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(var(--gradientOne));
+}

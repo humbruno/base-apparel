@@ -1,0 +1,6 @@
+@use "utils" as *;
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(var(--gradientOne));
+}
