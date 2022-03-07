@@ -44,23 +44,59 @@ a:active {
 }
 
 body {
-  min-height: 100vh;
   background: url("../images/bg-pattern-desktop.svg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+@media (min-width: 64em) {
+  body {
+    display: grid;
+    grid-template-areas: "head img" "main img" "main img";
+    grid-template-rows: auto 2fr;
+  }
 }
 
 .navbar {
   padding: 20px;
 }
+@media (min-width: 64em) {
+  .navbar {
+    grid-area: head;
+  }
+}
+.navbar img {
+  max-width: 40%;
+}
 
 main {
   text-align: center;
-  padding: 45px;
+  padding: 2.8125rem;
+}
+@media (min-width: 64em) {
+  main {
+    grid-area: main;
+    padding: 50px 0px;
+    text-align: left;
+  }
 }
 
 .hero img {
   width: 100%;
+}
+@media (min-width: 64em) {
+  .hero-mobile {
+    display: none;
+  }
+}
+@media (max-width: 63.9375em) {
+  .hero-desktop {
+    display: none;
+  }
+}
+@media (min-width: 64em) {
+  .hero {
+    grid-area: img;
+  }
 }
 
 h1 {
@@ -83,8 +119,8 @@ p {
 }
 
 .input-container {
-  max-width: 100%;
   margin-top: 25px;
+  width: 100%;
   position: relative;
 }
 .input-container input {
