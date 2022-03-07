@@ -6,57 +6,56 @@ body {
   background-size: cover;
 
   @include breakpoint(large) {
-    display: grid;
-    grid-template-areas:
-      "head img"
-      "main img"
-      "main img";
-    grid-template-rows: auto 2fr;
   }
 }
 
 .navbar {
   padding: 20px;
+  text-align: left;
 
   @include breakpoint(large) {
-    grid-area: head;
-  }
-
-  img {
-    max-width: 40%;
+    padding: 0;
+    padding-bottom: rem(180);
   }
 }
 
 main {
   text-align: center;
-  padding: rem(45);
+  padding: rem(20) rem(45);
 
   @include breakpoint(large) {
-    grid-area: main;
-    padding: 50px 0px;
+    padding: 0;
+    padding-left: rem(165);
+    padding-top: rem(70);
+    padding-right: rem(100);
+    width: 60%;
     text-align: left;
+  }
+
+  @include breakpoint(xlarge) {
+    padding-right: rem(400);
   }
 }
 
 .hero {
-  img {
-    width: 100%;
-  }
+  background: url("../images/hero-desktop.jpg");
+  width: 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  &-mobile {
-    @include breakpoint(large) {
-      display: none;
-    }
+  @include breakpoint-down(medium) {
+    display: none;
   }
+}
 
-  &-desktop {
-    @include breakpoint-down(medium) {
-      display: none;
-    }
-  }
+.hero-mobile {
+  display: none;
 
-  @include breakpoint(large) {
-    grid-area: img;
+  @include breakpoint-down(medium) {
+    display: block;
+    width: calc(100% + rem(90));
+    margin-left: rem(-45);
+    margin-bottom: rem(70);
   }
 }
 
@@ -64,12 +63,17 @@ h1 {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--darkGrayishRed);
-  letter-spacing: 8px;
+  letter-spacing: 10px;
   font-size: rem(40);
+  line-height: 1.2;
 
   span {
     font-weight: 300;
     color: var(--desaturatedRed);
+  }
+
+  @include breakpoint(large) {
+    font-size: rem(50);
   }
 }
 
@@ -77,11 +81,12 @@ p {
   color: var(--desaturatedRed);
   font-weight: 400;
   letter-spacing: 1px;
-  font-size: rem(12);
+  font-size: rem(16);
+  line-height: 1.5;
 }
 
 .input-container {
-  margin-top: 25px;
+  margin-top: rem(25);
   width: 100%;
   position: relative;
 
@@ -93,25 +98,77 @@ p {
     color: var(--desaturatedRed);
     border: 1px solid lightgray;
     font-family: "Josefin Sans", sans-serif;
+    font-size: rem(16);
+    transition: all 100ms ease-in-out;
+    opacity: 0.7;
 
     &:focus {
       outline: none;
+      background-color: transparent;
+      opacity: 1;
+    }
+
+    &::placeholder {
+      color: var(--desaturatedRed);
     }
   }
 }
 
 button {
   position: absolute;
-  padding: 14px 32px;
+  padding: rem(14) rem(32);
   border-radius: rem(50);
   border: none;
   background: linear-gradient(var(--gradientTwo));
   color: white;
   font-size: rem(16);
-  right: 0%;
+  right: -1%;
   cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  transition: filter 100ms ease-in-out;
 
   &:hover {
-    opacity: 0.8;
+    filter: brightness(110%);
+  }
+}
+
+.container {
+  @include breakpoint(large) {
+    display: flex;
+    min-height: 100vh;
+  }
+}
+
+.error-icon {
+  position: absolute;
+  right: 80px;
+  top: 12px;
+  opacity: 0;
+  transition: all 250ms ease-in-out;
+}
+
+.validation-text {
+  opacity: 0;
+  padding: 5px 0 0 16px;
+}
+
+// if validation-text received the TRUE class from JS validation
+.true {
+  color: green;
+}
+
+// if validation-text received the FALSE class from JS validation
+.false {
+  color: var(--softRed);
+}
+
+.invalid {
+  .error-icon {
+    opacity: 1;
+  }
+
+  input {
+    border: 2px solid var(--softRed);
   }
 }
