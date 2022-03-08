@@ -10,7 +10,7 @@ body {
 }
 
 .navbar {
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   text-align: left;
 
   @include breakpoint(large) {
@@ -34,6 +34,11 @@ main {
 
   @include breakpoint(xlarge) {
     padding-right: rem(400);
+  }
+
+  @include breakpoint-down(medium) {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -83,6 +88,11 @@ p {
   letter-spacing: 1px;
   font-size: rem(16);
   line-height: 1.5;
+
+  @include breakpoint-down(medium) {
+    max-width: 45ch;
+    align-self: center;
+  }
 }
 
 .input-container {
